@@ -1,8 +1,0 @@
-#spring:
-#  jpa:
-#    open-in-view: false
-#   database-platform: org.hibernate.dialect.PostgreSQLDialect
-#  datasource:
-#    url: 'jdbc:postgresql://data1.hib.no:5432/h180312'
-#    username: h180312
-#    password: pass
