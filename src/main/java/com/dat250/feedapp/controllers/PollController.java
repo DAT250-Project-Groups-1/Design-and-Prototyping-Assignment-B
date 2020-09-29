@@ -18,23 +18,23 @@ public class PollController {
         return pollService.readAllPolls();
     }
 
-    @GetMapping("/poll/{id}")
+    @GetMapping("/polls/{id}")
     Poll getPoll(@PathVariable(name = "id") int id) {
         return pollService.readPoll(id);
     }
 
-    @DeleteMapping("/poll/{id}")
+    @DeleteMapping("/polls/{id}")
     void deletePoll(@PathVariable(name = "id") int id) {
         pollService.deletePoll(id);
     }
 
-    @PostMapping("/poll")
+    @PostMapping("/polls")
     Poll postPoll(@RequestBody Poll poll) {
         pollService.createPoll(poll);
         return poll;
     }
 
-    @PutMapping("/poll")
+    @PutMapping("/polls")
     Poll putPoll(@RequestBody Poll poll) {
         pollService.updatePoll(poll);
         return poll;

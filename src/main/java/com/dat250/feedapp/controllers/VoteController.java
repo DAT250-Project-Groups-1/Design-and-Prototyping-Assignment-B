@@ -18,12 +18,12 @@ public class VoteController {
         return votingService.readAllVotes();
     }
 
-    @GetMapping("/vote/{id}")
+    @GetMapping("/votes/{id}")
     Vote getVote(@PathVariable(name = "id") int id) {
         return votingService.readVote(id);
     }
 
-    @PostMapping("/vote")
+    @PostMapping("/votes")
     Vote postVote(@RequestBody Vote vote) {
         votingService.addVoteToPoll(vote);
         return vote;

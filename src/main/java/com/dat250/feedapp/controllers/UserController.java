@@ -18,23 +18,23 @@ public class UserController {
         return userService.readAllUsers();
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/users/{id}")
     User getUser(@PathVariable(name = "id") int id) {
         return userService.readUserById(id);
     }
 
-    @PostMapping("/user")
+    @PostMapping("/users")
     User userPoll(@RequestBody User user) {
         userService.createUser(user);
         return user;
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/users/{id}")
     void deleteUser(@PathVariable(name = "id") int id) {
         userService.deleteUser(id);
     }
 
-    @PutMapping("/user")
+    @PutMapping("/users")
     User putUser(@RequestBody User user) {
         userService.updateUser(user);
         return user;
