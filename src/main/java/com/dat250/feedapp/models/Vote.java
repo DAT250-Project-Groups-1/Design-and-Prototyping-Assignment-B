@@ -1,6 +1,7 @@
 package com.dat250.feedapp.models;
 
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 

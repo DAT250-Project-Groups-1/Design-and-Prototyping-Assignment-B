@@ -49,9 +49,7 @@ public class PollDAO implements DAO<Poll> {
     @Override
     public void delete(int id) {
         Poll p = em.find(Poll.class, id);
-        List<Vote> votes = p.getVotes();
         em.getTransaction().begin();
-        for (Vote vote : votes) em.remove(vote);
         em.remove(p);
         em.getTransaction().commit();
     }
