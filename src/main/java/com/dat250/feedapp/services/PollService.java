@@ -12,8 +12,6 @@ import java.util.List;
 public class PollService {
     @Autowired
     private PollDAO pollDAO;
-    @Autowired
-    private VoteDAO voteDAO;
 
     public List<Poll> readAllPolls() {
         return pollDAO.read();

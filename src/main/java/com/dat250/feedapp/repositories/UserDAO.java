@@ -1,6 +1,8 @@
 package com.dat250.feedapp.repositories;
 
+import com.dat250.feedapp.models.Poll;
 import com.dat250.feedapp.models.User;
+import com.dat250.feedapp.models.Vote;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -47,7 +49,11 @@ public class UserDAO implements DAO<User> {
     @Override
     public void delete(int id) {
         User u = em.find(User.class, id);
+        List<Poll> polls = u.getPolls();
+        List<Vote> votes = u.getVotes();
         em.getTransaction().begin();
+        for (Vote vote : votes) em.remove(vote);
+        for (Poll poll : polls) em.remove(poll);
         em.remove(u);
         em.getTransaction().commit();
     }

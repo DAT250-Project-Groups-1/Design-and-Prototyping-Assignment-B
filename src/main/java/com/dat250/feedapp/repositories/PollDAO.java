@@ -2,6 +2,7 @@ package com.dat250.feedapp.repositories;
 
 
 import com.dat250.feedapp.models.Poll;
+import com.dat250.feedapp.models.Vote;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -48,7 +49,9 @@ public class PollDAO implements DAO<Poll> {
     @Override
     public void delete(int id) {
         Poll p = em.find(Poll.class, id);
+        List<Vote> votes = p.getVotes();
         em.getTransaction().begin();
+        for (Vote vote : votes) em.remove(vote);
         em.remove(p);
         em.getTransaction().commit();
     }
