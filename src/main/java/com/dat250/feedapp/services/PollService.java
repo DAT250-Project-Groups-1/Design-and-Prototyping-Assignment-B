@@ -2,7 +2,6 @@ package com.dat250.feedapp.services;
 
 import com.dat250.feedapp.models.Poll;
 import com.dat250.feedapp.repositories.PollDAO;
-import com.dat250.feedapp.repositories.VoteDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

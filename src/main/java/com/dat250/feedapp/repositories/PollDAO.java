@@ -1,8 +1,6 @@
 package com.dat250.feedapp.repositories;
 
-
 import com.dat250.feedapp.models.Poll;
-import com.dat250.feedapp.models.Vote;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
