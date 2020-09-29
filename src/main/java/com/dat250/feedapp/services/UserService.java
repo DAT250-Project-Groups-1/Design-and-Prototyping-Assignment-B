@@ -3,7 +3,7 @@ package com.dat250.feedapp.services;
 import java.util.List;
 
 import com.dat250.feedapp.models.User;
-import com.dat250.feedapp.repositories.UserRepository;
+import com.dat250.feedapp.repositories.UserDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,13 +12,13 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
   @Autowired
-  private UserRepository userRepository;
+  private UserDAO userDAO;
 
   public List<User> getAllUsers() {
-    return userRepository.findAll();
+    return userDAO.read();
   }
 
   public User getUserById(int id) {
-    return userRepository.getOne(id);
+    return userDAO.read(id);
   }
 }
