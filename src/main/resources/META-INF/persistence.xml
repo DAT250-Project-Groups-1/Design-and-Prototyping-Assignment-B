@@ -5,9 +5,9 @@
 	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 	<persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-		<class>models.Poll</class>
-		<class>models.User</class>
-		<class>models.Vote</class>
+		<class>com.dat250.feedapp.models.Poll</class>
+		<class>com.dat250.feedapp.models.User</class>
+		<class>com.dat250.feedapp.models.Vote</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://data1.hib.no:5432/h180312"/>
