@@ -3,10 +3,7 @@ package com.dat250.feedapp.controllers;
 import com.dat250.feedapp.models.Poll;
 import com.dat250.feedapp.services.PollService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,4 +28,15 @@ public class PollController {
         pollService.deletePoll(id);
     }
 
+    @PostMapping("/poll")
+    Poll postPoll(@RequestBody Poll poll) {
+        pollService.createPoll(poll);
+        return poll;
+    }
+
+    @PutMapping("/poll")
+    Poll putPoll(@RequestBody Poll poll) {
+        pollService.updatePoll(poll);
+        return poll;
+    }
 }

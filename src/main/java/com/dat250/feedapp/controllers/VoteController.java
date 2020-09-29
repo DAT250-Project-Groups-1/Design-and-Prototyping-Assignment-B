@@ -3,10 +3,7 @@ package com.dat250.feedapp.controllers;
 import com.dat250.feedapp.models.Vote;
 import com.dat250.feedapp.services.VotingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,8 +18,14 @@ public class VoteController {
         return votingService.readAllVotes();
     }
 
+    @GetMapping("/vote/{id}")
+    Vote getVote(@PathVariable(name = "id") int id) {
+        return votingService.readVote(id);
+    }
+
     @PostMapping("/vote")
-    boolean postVote(@RequestBody Vote vote) {
-        return votingService.addVoteToPoll(vote);
+    Vote postVote(@RequestBody Vote vote) {
+        votingService.addVoteToPoll(vote);
+        return vote;
     }
 }

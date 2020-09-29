@@ -3,10 +3,7 @@ package com.dat250.feedapp.controllers;
 import com.dat250.feedapp.models.User;
 import com.dat250.feedapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,8 +23,20 @@ public class UserController {
         return userService.readUserById(id);
     }
 
+    @PostMapping("/user")
+    User userPoll(@RequestBody User user) {
+        userService.createUser(user);
+        return user;
+    }
+
     @DeleteMapping("/user/{id}")
     void deleteUser(@PathVariable(name = "id") int id) {
         userService.deleteUser(id);
+    }
+
+    @PutMapping("/user")
+    User putUser(@RequestBody User user) {
+        userService.updateUser(user);
+        return user;
     }
 }

@@ -21,7 +21,7 @@ public class VotingService {
         return voteDAO.read(id);
     }
 
-    public boolean addVoteToPoll(Vote vote) {
-        return true;
+    public void addVoteToPoll(Vote vote) {
+        return;
     }
 }
