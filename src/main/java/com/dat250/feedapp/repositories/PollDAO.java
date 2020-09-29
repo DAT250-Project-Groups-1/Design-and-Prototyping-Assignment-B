@@ -1,7 +1,6 @@
 package com.dat250.feedapp.repositories;
 
 
-
 import com.dat250.feedapp.models.Poll;
 import org.springframework.stereotype.Repository;
 
@@ -10,12 +9,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class PollDAO implements DAO<Poll> {
 
-    private EntityManager em;
+    private final EntityManager em;
 
     public PollDAO() {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
@@ -24,13 +22,13 @@ public class PollDAO implements DAO<Poll> {
 
     @Override
     public List<Poll> read() {
-        Query q =em.createQuery("Select p from Poll p");
+        Query q = em.createQuery("Select p from Poll p");
         return q.getResultList();
     }
 
     @Override
     public Poll read(int id) {
-       return em.find(Poll.class, id);
+        return em.find(Poll.class, id);
     }
 
     @Override

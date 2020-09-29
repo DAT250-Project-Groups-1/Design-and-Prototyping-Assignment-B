@@ -8,12 +8,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class VoteDAO implements DAO<Vote> {
 
-    private EntityManager em;
+    private final EntityManager em;
 
     public VoteDAO() {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
@@ -22,7 +21,7 @@ public class VoteDAO implements DAO<Vote> {
 
     @Override
     public List<Vote> read() {
-        Query q =em.createQuery("Select v from Vote v");
+        Query q = em.createQuery("Select v from Vote v");
         return q.getResultList();
     }
 

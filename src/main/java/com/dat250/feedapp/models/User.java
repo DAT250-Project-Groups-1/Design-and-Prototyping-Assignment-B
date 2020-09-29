@@ -1,14 +1,11 @@
 package com.dat250.feedapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.ToString;
-
-import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import org.hibernate.annotations.Proxy;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Entity

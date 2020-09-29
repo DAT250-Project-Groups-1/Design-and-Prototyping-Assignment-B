@@ -8,12 +8,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class UserDAO implements DAO<User> {
 
-    private EntityManager em;
+    private final EntityManager em;
 
     public UserDAO() {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
