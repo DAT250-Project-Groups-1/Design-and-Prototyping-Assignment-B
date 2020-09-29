@@ -1,0 +1,12 @@
+/home/andreas/master/dat250/assignments/design-and-prototyping-assignment-b/src/main/java/com/dat250/feedapp/controllers/UserController.java
+/home/andreas/master/dat250/assignments/design-and-prototyping-assignment-b/src/main/java/com/dat250/feedapp/controllers/PollController.java
+/home/andreas/master/dat250/assignments/design-and-prototyping-assignment-b/src/main/java/com/dat250/feedapp/services/VotingService.java
+/home/andreas/master/dat250/assignments/design-and-prototyping-assignment-b/src/main/java/com/dat250/feedapp/services/UserService.java
+/home/andreas/master/dat250/assignments/design-and-prototyping-assignment-b/src/main/java/com/dat250/feedapp/repositories/VoteRepository.java
+/home/andreas/master/dat250/assignments/design-and-prototyping-assignment-b/src/main/java/com/dat250/feedapp/repositories/UserRepository.java
+/home/andreas/master/dat250/assignments/design-and-prototyping-assignment-b/src/main/java/com/dat250/feedapp/controllers/VoteController.java
+/home/andreas/master/dat250/assignments/design-and-prototyping-assignment-b/src/main/java/com/dat250/feedapp/models/Vote.java
+/home/andreas/master/dat250/assignments/design-and-prototyping-assignment-b/src/main/java/com/dat250/feedapp/models/User.java
+/home/andreas/master/dat250/assignments/design-and-prototyping-assignment-b/src/main/java/com/dat250/feedapp/models/Poll.java
+/home/andreas/master/dat250/assignments/design-and-prototyping-assignment-b/src/main/java/com/dat250/feedapp/repositories/PollRepository.java
+/home/andreas/master/dat250/assignments/design-and-prototyping-assignment-b/src/main/java/com/dat250/feedapp/App.java
