@@ -3,7 +3,9 @@ package com.dat250.feedapp.controllers;
 import com.dat250.feedapp.models.Vote;
 import com.dat250.feedapp.services.VotingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -25,7 +27,10 @@ public class VoteController {
 
     @PostMapping("/votes")
     Vote postVote(@RequestBody Vote vote) {
-        votingService.addVoteToPoll(vote);
+        boolean success = votingService.addVoteToPoll(vote);
+        if (!success) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User and/or poll not found");
+        }
         return vote;
     }
 }

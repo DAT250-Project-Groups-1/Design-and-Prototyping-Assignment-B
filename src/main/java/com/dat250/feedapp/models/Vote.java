@@ -11,6 +11,8 @@ public class Vote {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    // Json value is yes
     @Column(name = "is_yes")
     private boolean isYes;
 

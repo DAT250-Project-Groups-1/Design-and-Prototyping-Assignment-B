@@ -1,6 +1,7 @@
 package com.dat250.feedapp.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.ToString;
 
@@ -19,6 +20,8 @@ public class User {
     private String name;
     @Column(name = "mail")
     private String mail;
+
+    // Json value is admin
     @Column(name = "is_admin")
     private boolean isAdmin;
 

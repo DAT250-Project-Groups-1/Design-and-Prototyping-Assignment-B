@@ -6,7 +6,8 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
 import java.util.List;
 
 @Repository
@@ -21,7 +22,7 @@ public class PollDAO implements DAO<Poll> {
 
     @Override
     public List<Poll> read() {
-        Query q = em.createQuery("Select p from Poll p");
+        TypedQuery<Poll> q = em.createQuery("Select p from Poll p", Poll.class);
         return q.getResultList();
     }
 
