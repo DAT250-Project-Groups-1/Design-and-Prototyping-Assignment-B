@@ -17,11 +17,11 @@ public class IoTDevice {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "poll_id")
-    private int pollid;
-
     @Column(name = "name")
     private String name;
+
+    @OneToOne
+    private Poll poll;
 
     @JsonIgnore
     @ToString.Exclude

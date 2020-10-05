@@ -14,20 +14,18 @@ public class IoTVote {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "poll_id")
-    private int pollid;
-
     @Column(name = "count_yes")
     private int countYes;
 
     @Column(name = "count_no")
     private int countNo;
 
+    @OneToOne
+    private Poll poll;
+
     @ManyToOne
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private IoTDevice ioTDevice;
-
-
 
 }
