@@ -1,6 +1,7 @@
 package com.dat250.feedapp.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.ToString;
 
@@ -31,7 +32,6 @@ public class Poll {
     @Column(name = "is_private")
     private boolean isPrivate;
 
-    @JsonIgnore
     @ManyToOne
     @ToString.Exclude
     private User user;

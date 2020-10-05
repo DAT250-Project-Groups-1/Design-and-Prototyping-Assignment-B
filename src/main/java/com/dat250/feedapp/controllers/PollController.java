@@ -3,7 +3,9 @@ package com.dat250.feedapp.controllers;
 import com.dat250.feedapp.models.Poll;
 import com.dat250.feedapp.services.PollService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -30,7 +32,10 @@ public class PollController {
 
     @PostMapping("/polls")
     Poll postPoll(@RequestBody Poll poll) {
-        pollService.createPoll(poll);
+        boolean success = pollService.createPoll(poll);
+        if (!success) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
         return poll;
     }
 

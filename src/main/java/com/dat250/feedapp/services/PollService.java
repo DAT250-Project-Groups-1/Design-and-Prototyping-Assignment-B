@@ -1,7 +1,10 @@
 package com.dat250.feedapp.services;
 
 import com.dat250.feedapp.models.Poll;
+import com.dat250.feedapp.models.User;
 import com.dat250.feedapp.repositories.PollDAO;
+import com.dat250.feedapp.repositories.UserDAO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +15,9 @@ public class PollService {
     @Autowired
     private PollDAO pollDAO;
 
+    @Autowired
+    private UserDAO userDAO;
+
     public List<Poll> readAllPolls() {
         return pollDAO.read();
     }
@@ -20,8 +26,15 @@ public class PollService {
         return pollDAO.read(id);
     }
 
-    public void createPoll(Poll poll) {
+    public boolean createPoll(Poll poll) {
+        User user = userDAO.read(poll.getUser().getId());
+        if (user == null) {
+            return false;
+        }
+        poll.setUser(user);
         pollDAO.create(poll);
+        return true;
+
     }
 
     public void deletePoll(int id) {

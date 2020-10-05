@@ -6,7 +6,8 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
 import java.util.List;
 
 @Repository
@@ -21,7 +22,7 @@ public class UserDAO implements DAO<User> {
 
     @Override
     public List<User> read() {
-        Query q = em.createQuery("Select u from User u");
+        TypedQuery<User> q = em.createQuery("Select u from User u", User.class);
         return q.getResultList();
     }
 
