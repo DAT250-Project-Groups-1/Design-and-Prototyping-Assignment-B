@@ -33,7 +33,7 @@ public class Poll {
     private boolean isPrivate;
 
     @JsonIgnore
-    @ManyToOne()
+    @ManyToOne
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private User user;
