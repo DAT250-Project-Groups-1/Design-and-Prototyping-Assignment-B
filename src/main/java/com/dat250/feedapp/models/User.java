@@ -2,6 +2,7 @@ package com.dat250.feedapp.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -24,11 +25,13 @@ public class User {
 
     @JsonIgnore
     @ToString.Exclude
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Poll> polls;
 
     @JsonIgnore
     @ToString.Exclude
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Vote> votes;
 }

@@ -2,6 +2,7 @@ package com.dat250.feedapp.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -32,13 +33,15 @@ public class Poll {
     private boolean isPrivate;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne()
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private User user;
 
     @JsonIgnore
     @ToString.Exclude
-    @OneToMany(mappedBy = "poll", fetch = FetchType.EAGER)
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "poll", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Vote> votes;
 
 }
