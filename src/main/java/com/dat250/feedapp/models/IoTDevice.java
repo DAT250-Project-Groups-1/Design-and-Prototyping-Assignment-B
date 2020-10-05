@@ -26,7 +26,7 @@ public class IoTDevice {
     @JsonIgnore
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "iotDevice", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "ioTDevice", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<IoTVote> ioTVotes;
 
 
