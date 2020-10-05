@@ -8,6 +8,8 @@
 		<class>com.dat250.feedapp.models.Poll</class>
 		<class>com.dat250.feedapp.models.User</class>
 		<class>com.dat250.feedapp.models.Vote</class>
+		<class>com.dat250.feedapp.models.IoTVote</class>
+		<class>com.dat250.feedapp.models.IoTDevice</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://data1.hib.no:5432/h180312"/>
