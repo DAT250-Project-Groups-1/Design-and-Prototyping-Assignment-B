@@ -1,13 +1,14 @@
 package com.dat250.feedapp.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Data
@@ -20,15 +21,9 @@ public class IoTDevice {
     @Column(name = "name")
     private String name;
 
-    @OneToOne
-    private Poll poll;
-
     @JsonIgnore
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "ioTDevice", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-    private List<IoTVote> ioTVotes;
-
-
-
+    private List<IoTVotes> ioTVotes;
 }

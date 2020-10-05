@@ -20,3 +20,11 @@ insert into votes (id, is_yes, poll_id, user_id) values
 (5,FALSE, 3, 5),
 (6,TRUE, 3, 1),
 (7,TRUE, 4, 2);
+
+insert into iot_devices (id, name) values
+(1,'TestDevice'),
+(2,'AnotherTestDevice');
+
+insert into iot_votes (id, count_yes, count_no, poll_id, iotdevice_id) values
+(1, 10, 5, 1, 1),
+(2, 5, 6, 1, 2);

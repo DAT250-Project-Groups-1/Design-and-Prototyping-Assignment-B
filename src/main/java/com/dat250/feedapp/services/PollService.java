@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PollService {
+
     @Autowired
     private PollDAO pollDAO;
 
@@ -19,11 +21,22 @@ public class PollService {
     private UserDAO userDAO;
 
     public List<Poll> readAllPolls() {
-        return pollDAO.read();
+        return pollDAO.read().stream().map(p -> {
+            int yes = p.getIoTVotes().stream().map(i -> i.getCountYes()).reduce(0, (s, e) -> s + e);
+            int no = p.getIoTVotes().stream().map(i -> i.getCountNo()).reduce(0, (s, e) -> s + e);
+            p.setCountYes(p.getCountYes() + yes);
+            p.setCountNo(p.getCountNo() + no);
+            return p;
+        }).collect(Collectors.toList());
     }
 
     public Poll readPoll(int id) {
-        return pollDAO.read(id);
+        Poll poll = pollDAO.read(id);
+        int yes = poll.getIoTVotes().stream().map(i -> i.getCountYes()).reduce(0, (s, e) -> s + e);
+        int no = poll.getIoTVotes().stream().map(i -> i.getCountNo()).reduce(0, (s, e) -> s + e);
+        poll.setCountYes(poll.getCountYes() + yes);
+        poll.setCountNo(poll.getCountNo() + no);
+        return poll;
     }
 
     public boolean createPoll(Poll poll) {
@@ -44,5 +57,4 @@ public class PollService {
     public void updatePoll(Poll poll) {
         pollDAO.update(poll);
     }
-
 }
