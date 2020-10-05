@@ -12,24 +12,25 @@ import java.util.List;
 public class IoTDeviceService {
 
     @Autowired
-    private IoTDeviceDAO userDAO;
+    private IoTDeviceDAO ioTDeviceDAO;
 
     public List<IoTDevice> readAllIoTDevices() {
-        return IoTDeviceDAO.read();
+        return ioTDeviceDAO.read();
     }
 
     public IoTDevice readIoTDeviceById(int id) {
-        return IoTDeviceDAO.read(id);
+        return ioTDeviceDAO.read(id);
     }
 
     public void createIoTDevice(IoTDevice ioTDevice) {
-        IoTDeviceDAO.create(ioTDevice);
+        ioTDeviceDAO.create(ioTDevice);
     }
 
     public void deleteIoTDevice(int id) {
-        IoTDeviceDAO.delete(id);
+        ioTDeviceDAO.delete(id);
     }
 
     public void updateIoTDevice(IoTDevice ioTDevice) {
-        IoTDeviceDAO.update(ioTDevice);
+        ioTDeviceDAO.update(ioTDevice);
     }
+}

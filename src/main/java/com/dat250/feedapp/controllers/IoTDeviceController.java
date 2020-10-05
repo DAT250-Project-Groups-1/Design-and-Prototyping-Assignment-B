@@ -1,7 +1,6 @@
 package com.dat250.feedapp.controllers;
 
 import com.dat250.feedapp.models.IoTDevice;
-import com.dat250.feedapp.services.IOTService;
 import com.dat250.feedapp.services.IoTDeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
