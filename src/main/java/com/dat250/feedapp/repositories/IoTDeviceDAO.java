@@ -1,6 +1,7 @@
 package com.dat250.feedapp.repositories;
 
 import com.dat250.feedapp.models.IoTDevice;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -8,6 +9,7 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@Repository
 public class IoTDeviceDAO implements DAO<IoTDevice> {
 
     private final EntityManager em;
