@@ -8,6 +8,7 @@ import com.dat250.feedapp.repositories.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,16 +23,17 @@ public class PollService {
 
     public List<Poll> readAllPolls() {
         return pollDAO.read().stream().map(p -> {
-            int yes = p.getIoTVotes().stream().map(i -> i.getCountYes()).reduce(0, (s, e) -> s + e);
-            int no = p.getIoTVotes().stream().map(i -> i.getCountNo()).reduce(0, (s, e) -> s + e);
-            p.setCountYes(p.getCountYes() + yes);
-            p.setCountNo(p.getCountNo() + no);
-            return p;
+            Poll poll = p.ReturnPoll();
+            int yes = poll.getIoTVotes().stream().map(i -> i.getCountYes()).reduce(0, (s, e) -> s + e);
+            int no = poll.getIoTVotes().stream().map(i -> i.getCountNo()).reduce(0, (s, e) -> s + e);
+            poll.setCountYes(poll.getCountYes() + yes);
+            poll.setCountNo(poll.getCountNo() + no);
+            return poll;
         }).collect(Collectors.toList());
     }
 
     public Poll readPoll(int id) {
-        Poll poll = pollDAO.read(id);
+        Poll poll = (Poll) pollDAO.read(id).ReturnPoll();
         int yes = poll.getIoTVotes().stream().map(i -> i.getCountYes()).reduce(0, (s, e) -> s + e);
         int no = poll.getIoTVotes().stream().map(i -> i.getCountNo()).reduce(0, (s, e) -> s + e);
         poll.setCountYes(poll.getCountYes() + yes);

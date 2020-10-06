@@ -5,6 +5,8 @@ import java.util.List;
 import com.dat250.feedapp.models.IoTDevice;
 import com.dat250.feedapp.models.IoTVotes;
 import com.dat250.feedapp.services.IoTService;
+import com.dat250.feedapp.services.VotingService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,9 @@ public class IoTController {
 
   @Autowired
   private IoTService iotService;
+
+  @Autowired
+  private VotingService votingService;
 
   @GetMapping("/iot")
   List<IoTDevice> getIOTDevices() {
@@ -46,7 +51,11 @@ public class IoTController {
   }
 
   @PostMapping("/iot/votes")
-  void postVote(@RequestBody IoTVotes vote) {
-    iotService.addIoTVotes(vote);
+  IoTVotes postVote(@RequestBody IoTVotes votes) {
+    boolean success = votingService.addIoTVotesToPoll(votes);
+    if (!success) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Device and/or poll not found");
+    }
+    return votes;
   }
 }
