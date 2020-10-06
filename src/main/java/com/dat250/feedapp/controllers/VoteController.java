@@ -1,5 +1,6 @@
 package com.dat250.feedapp.controllers;
 
+import com.dat250.feedapp.models.PublicVote;
 import com.dat250.feedapp.models.Vote;
 import com.dat250.feedapp.services.VotingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,16 @@ public class VoteController {
     Vote postVote(@RequestBody Vote vote) {
         boolean success = votingService.addVoteToPoll(vote);
         if (!success) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User and/or poll not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User already voted or user and/or poll not found");
+        }
+        return vote;
+    }
+
+    @PostMapping("/votes/public")
+    PublicVote postPublicVote(@RequestBody PublicVote vote) {
+        boolean success = votingService.addPublicVoteToPoll(vote);
+        if (!success) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Poll not found");
         }
         return vote;
     }

@@ -12,6 +12,7 @@ import java.util.List;
 
 @Service
 public class PollService {
+
     @Autowired
     private PollDAO pollDAO;
 
@@ -44,5 +45,4 @@ public class PollService {
     public void updatePoll(Poll poll) {
         pollDAO.update(poll);
     }
-
 }
