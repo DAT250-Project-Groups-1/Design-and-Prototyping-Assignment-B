@@ -49,20 +49,4 @@ public class Poll {
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "poll", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Vote> votes;
-
-    public Poll ReturnPoll() {
-        Poll pollToReturn = new Poll();
-        pollToReturn.setId(this.getId());
-        pollToReturn.setQuestion(this.getQuestion());
-        pollToReturn.setFromDate(this.getFromDate());
-        pollToReturn.setToDate(this.getToDate());
-        pollToReturn.setCountYes(this.getCountYes());
-        pollToReturn.setCountNo(this.getCountNo());
-        pollToReturn.setCode(this.getCode());
-        pollToReturn.setPrivate(this.isPrivate());
-        pollToReturn.setUser(this.getUser());
-        pollToReturn.setIoTVotes(this.getIoTVotes());
-        pollToReturn.setVotes(this.getVotes());
-        return pollToReturn;
-    }
 }

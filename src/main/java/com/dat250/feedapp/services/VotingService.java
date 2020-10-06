@@ -69,6 +69,8 @@ public class VotingService {
         if (poll == null || device == null) {
             return false;
         }
+        poll.setCountYes(poll.getCountYes() + votes.getCountYes());
+        poll.setCountNo(poll.getCountNo() + votes.getCountNo());
         votes.setPoll(poll);
         votes.setIoTDevice(device);
         iotVotesDAO.create(votes);
