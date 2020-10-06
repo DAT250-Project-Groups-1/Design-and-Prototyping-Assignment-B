@@ -57,6 +57,7 @@ public class VotingService {
         } else {
             poll.setCountNo(poll.getCountNo() + 1);
         }
+        pollDAO.create(poll);
         vote.setUser(user);
         vote.setPoll(poll);
         voteDAO.create(vote);
@@ -71,6 +72,7 @@ public class VotingService {
         }
         poll.setCountYes(poll.getCountYes() + votes.getCountYes());
         poll.setCountNo(poll.getCountNo() + votes.getCountNo());
+        pollDAO.create(poll);
         votes.setPoll(poll);
         votes.setIoTDevice(device);
         iotVotesDAO.create(votes);
@@ -87,6 +89,7 @@ public class VotingService {
         } else {
             poll.setCountNo(poll.getCountNo() + 1);
         }
+        pollDAO.create(poll);
         return true;
     }
 }
